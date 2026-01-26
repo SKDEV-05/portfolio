@@ -1,0 +1,136 @@
+
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  background: rgba(5, 5, 5, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: -1px;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+
+    a {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-text-secondary);
+      transition: var(--transition-fast);
+      cursor: pointer;
+
+      &:hover, &.active {
+        color: var(--color-accent);
+      }
+    }
+
+    @media (max-width: 768px) {
+      display: none; // Mobile menu not requested explicitly but good practice, keeping minimal for now per request "Minimal"
+    }
+  }
+
+  .controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    .language-switcher {
+      position: relative;
+
+      .lang-btn {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--color-text-secondary);
+        padding: 8px 12px;
+        border-radius: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: var(--transition-fast);
+
+        .flag {
+          font-size: 1.2rem;
+        }
+
+        &:hover {
+          border-color: var(--color-accent);
+          color: var(--color-accent);
+        }
+      }
+
+      .lang-menu {
+        position: absolute;
+        top: 120%;
+        right: 0;
+        background: var(--color-card);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 0.5rem;
+        min-width: 150px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+
+        .lang-option {
+          background: transparent;
+          border: none;
+          color: #ccc;
+          padding: 10px;
+          text-align: left;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          border-radius: 8px;
+          transition: var(--transition-fast);
+
+          .flag {
+            font-size: 1.2rem;
+          }
+
+          &:hover, &.active {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--color-accent);
+          }
+        }
+      }
+    }
+
+    .music-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--color-accent);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: var(--transition-fast);
+
+      &:hover {
+        background: var(--color-accent-dim);
+        border-color: var(--color-accent);
+        transform: scale(1.1);
+      }
+    }
+  }
+}

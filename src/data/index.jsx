@@ -67,7 +67,8 @@ export const PROJECTS = [
     title: "Social Media Application",
     description: "Real-time social platform featuring live chat, posts, and user interactions without page refreshes, powered by WebSockets.",
     stack: ["Laravel", "React", "Inertia.js", "Tailwind CSS", "Laravel Reverb"],
-    type: "slider",
-    assets: [social1, social2, socialChat]
+    type: "video-scroll",
+    video: socialVideo,
+    images: [social1, social2, socialChat]
   }
 ];

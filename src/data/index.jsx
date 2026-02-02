@@ -8,13 +8,12 @@ import ecommerce2 from '../assets/projects/ecommerce/ecommerce2.png';
 import schoolImg from '../assets/projects/school-management/school_management.png';
 
 // Projects - Social
-import socialVideo from '../assets/projects/social-media/chat.mp4';
 import social1 from '../assets/projects/social-media/social1.png';
 import social2 from '../assets/projects/social-media/social2.png';
 import socialChat from '../assets/projects/social-media/chat.png';
 
 // Icons
-import { FaHtml5, FaCss3Alt, FaJs, FaPhp, FaPython, FaReact, FaLaravel, FaNodeJs, FaGlobe } from 'react-icons/fa';
+import { FaHtml5, FaCss3Alt, FaJs, FaPhp, FaPython, FaReact, FaLaravel, FaNodeJs, FaGlobe, FaJava } from 'react-icons/fa';
 import { SiMongodb, SiMysql, SiTailwindcss, SiExpo } from 'react-icons/si';
 
 export const PROFILE = {
@@ -24,25 +23,26 @@ export const PROFILE = {
   image: profileImg,
   social: {
     instagram: "https://www.instagram.com/saadkorma_dev/",
-    tiktok: "#", // User didn't provide link, just mentioned it
+    tiktok: "#",
     github: "https://github.com/SKDEV-05",
     phone: "0670955826"
   }
 };
 
 export const TECH_STACK = [
-  { name: "HTML", icon: FaHtml5 },
-  { name: "CSS", icon: FaCss3Alt },
-  { name: "JavaScript", icon: FaJs },
-  { name: "PHP", icon: FaPhp },
-  { name: "Python", icon: FaPython },
-  { name: "React", icon: FaReact },
-  { name: "Laravel", icon: FaLaravel },
-  { name: "MongoDB", icon: SiMongodb },
-  { name: "Inertia", icon: FaGlobe }, // Using generic or similar if specific not available
-  { name: "Express.js", icon: FaNodeJs }, // Express usually associated with Node icon
-  { name: "MySQL", icon: SiMysql },
-  { name: "React Native", icon: SiExpo },
+  { name: "HTML", icon: FaHtml5, level: 90 },
+  { name: "CSS", icon: FaCss3Alt, level: 90 },
+  { name: "JavaScript", icon: FaJs, level: 80 },
+  { name: "PHP", icon: FaPhp, level: 70 },
+  { name: "Python", icon: FaPython, level: 70 },
+  { name: "Java", icon: FaJava, level: 60 },
+  { name: "React", icon: FaReact, level: 80 },
+  { name: "Laravel", icon: FaLaravel, level: 75 },
+  { name: "MongoDB", icon: SiMongodb, level: 50 },
+  { name: "Inertia", icon: FaGlobe, level: 70 },
+  { name: "Express.js", icon: FaNodeJs, level: 40 },
+  { name: "MySQL", icon: SiMysql, level: 80 },
+  { name: "React Native", icon: SiExpo, level: 80 },
 ];
 
 export const PROJECTS = [
@@ -67,8 +67,7 @@ export const PROJECTS = [
     title: "Social Media Application",
     description: "Real-time social platform featuring live chat, posts, and user interactions without page refreshes, powered by WebSockets.",
     stack: ["Laravel", "React", "Inertia.js", "Tailwind CSS", "Laravel Reverb"],
-    type: "video-scroll",
-    video: socialVideo,
-    images: [social1, social2, socialChat]
+    type: "slider",
+    assets: [social1, social2, socialChat]
   }
 ];

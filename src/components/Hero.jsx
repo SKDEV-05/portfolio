@@ -101,11 +101,11 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
+            data-text={`${t('hero.greeting')} ${t('hero.name')}`}
           >
             {t('hero.greeting')} <span>{t('hero.name')}</span>
           </motion.h1>
           
-          {/* Animated subtitle */}
           <motion.div 
             className="animated-subtitle"
             initial={{ opacity: 0 }}
@@ -149,6 +149,22 @@ const Hero = () => {
           </div>
         </motion.div>
       </div>
+
+      <motion.div 
+        className="scroll-indicator"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+      >
+        <div className="mouse">
+          <div className="wheel"></div>
+        </div>
+        <div className="arrows">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </motion.div>
     </section>
   );
 };

@@ -11,6 +11,9 @@ import SwimmingIcons from './components/SwimmingIcons';
 import LoadingScreen from './components/LoadingScreen';
 // import CustomCursor from './components/CustomCursor';
 
+import PageProgressBar from './components/PageProgressBar';
+import BackToTop from './components/BackToTop';
+
 function App() {
   const [loading, setLoading] = useState(true);
   
@@ -34,6 +37,7 @@ function App() {
 
   return (
     <div className="App">
+      <PageProgressBar />
       {/* Custom cursor removed - not good */}
       <SwimmingIcons />
       <CanvasAnimation />
@@ -44,6 +48,7 @@ function App() {
       <About />
       <Contact />
       <Footer />
+      <BackToTop />
     </div>
   );
 }

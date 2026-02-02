@@ -1,32 +1,44 @@
 
 
 .tech-stack-section {
-  background: black;
+  background: var(--color-bg);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   overflow: hidden;
-  padding: 4rem 0;
+  padding: 5rem 0;
+  
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
   
   .container {
     width: 100%;
-    max-width: 100%; // Full width for smooth scroll
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @media (max-width: 768px) {
+      padding: 0 1.5rem;
+    }
   }
 
-  h2 {
+  .section-title {
     text-align: center;
-    margin-bottom: 3rem; // Increased margin so hover effects are visible
-    color: var(--color-text-secondary);
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    font-family: var(--font-display);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .scroll-wrapper {
     display: flex;
     overflow: hidden;
     width: 100%;
-    padding: 1rem 0;
-    direction: ltr; /* Force LTR even in Arabic so scroll math works */
+    padding: 1rem 0 3rem;
+    direction: ltr;
     
     // Mask for fading edges
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -42,24 +54,42 @@
     animation: scroll 30s linear infinite;
     width: max-content;
     padding-left: 2rem;
-    
-    // Duplicate content handling via React logic or just double rendering
   }
 
   .tech-card {
-    background: var(--color-card);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 1.5rem 2rem;
-    min-width: 140px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 1.8rem 2.2rem;
+    min-width: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.8rem;
-    transition: all 0.3s ease;
+    gap: 1rem;
+    transition: all var(--transition-smooth);
     cursor: pointer;
     animation: float 6s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+
+    // Gradient border on hover
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 2px;
+      background: var(--gradient-primary);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity var(--transition-smooth);
+    }
 
     // Random delays for each card
     &:nth-child(1) { animation-delay: 0s; }
@@ -75,33 +105,38 @@
     &:nth-child(11) { animation-delay: 5s; }
 
     .icon {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: var(--color-text-secondary);
-      transition: all 0.3s ease;
+      transition: all var(--transition-smooth);
     }
     
     span {
-      font-size: 0.9rem;
-      font-weight: 500;
+      font-size: 0.95rem;
+      font-weight: 600;
       color: var(--color-text-secondary);
-      transition: all 0.3s ease;
+      transition: all var(--transition-smooth);
+      letter-spacing: 0.3px;
     }
 
     &:hover {
-      border-color: var(--color-accent);
-      transform: translateY(-12px) scale(1.05);
-      background: rgba(0, 255, 136, 0.05);
-      box-shadow: 0 12px 30px rgba(0, 255, 136, 0.3);
+      transform: translateY(-15px) scale(1.08);
+      background: rgba(0, 255, 136, 0.08);
+      box-shadow: 0 15px 40px rgba(0, 255, 136, 0.4);
       animation-play-state: paused;
+
+      &::before {
+        opacity: 1;
+      }
 
       .icon {
         color: var(--color-accent);
-        filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.8));
-        transform: scale(1.2);
+        filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.9));
+        transform: scale(1.25) rotate(5deg);
       }
       
       span {
         color: var(--color-accent);
+        transform: translateY(-2px);
       }
     }
   }
@@ -114,10 +149,124 @@
       transform: translateY(-15px);
     }
   }
+
+  // Skills Grid with Progress Bars
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .skill-item {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 1.5rem;
+      border-radius: 16px;
+      border: 1px solid var(--glass-border);
+      transition: all var(--transition-smooth);
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+        border-color: rgba(0, 255, 136, 0.3);
+      }
+
+      .skill-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .skill-info {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+
+          .skill-icon {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            transition: all var(--transition-smooth);
+          }
+
+          .skill-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-text-main);
+            letter-spacing: 0.3px;
+          }
+        }
+
+        .skill-percentage {
+          font-size: 1.1rem;
+          font-weight: 700;
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          font-family: var(--font-display);
+        }
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50px;
+        overflow: hidden;
+        position: relative;
+
+        .progress-fill {
+          height: 100%;
+          background: var(--gradient-primary);
+          border-radius: 50px;
+          position: relative;
+          box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+
+          // Animated shimmer effect
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+              90deg,
+              transparent,
+              rgba(255, 255, 255, 0.3),
+              transparent
+            );
+            animation: shimmer 2s infinite;
+          }
+
+          @keyframes shimmer {
+            0% {
+              transform: translateX(-100%);
+            }
+            100% {
+              transform: translateX(100%);
+            }
+          }
+        }
+      }
+
+      // Hover effect on skill icon
+      &:hover .skill-icon {
+        transform: scale(1.2) rotate(5deg);
+        filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.8));
+      }
+    }
+  }
 }
 
 @keyframes scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); } 
-  // We assume the track content is doubled, so scrolling by 50% returns to visual start
 }
+

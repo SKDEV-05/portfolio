@@ -8,8 +8,6 @@ import { useLanguage } from '../i18n/LanguageContext';
 
 const ProjectCard = ({ project, index }) => {
   const isReversed = index % 2 !== 0;
-  const [activeMedia, setActiveMedia] = useState(project.type === 'video-scroll' ? 'video' : null);
-  const [selectedImage, setSelectedImage] = useState(0);
   const { t } = useLanguage();
 
   // Get translated project data
@@ -49,9 +47,9 @@ const ProjectCard = ({ project, index }) => {
             modules={[Autoplay, Pagination]}
             pagination={{ clickable: true }}
             className="project-slider"
-            autoHeight={true} // Adjusts height to slide content
-            observer={true} // Updates on DOM changes
-            observeParents={true} // Updates if parent changes (sticky/scroll)
+            autoHeight={true}
+            observer={true}
+            observeParents={true}
           >
             {project.assets.map((img, i) => (
               <SwiperSlide key={i}>
@@ -68,60 +66,6 @@ const ProjectCard = ({ project, index }) => {
             >
                 <img src={project.assets[0]} alt={title} style={{ width: '100%', borderRadius: '12px' }} />
             </motion.div>
-        )}
-
-        {project.type === 'video-scroll' && (
-            <div className="video-section">
-                <div className="main-media">
-                    {activeMedia === 'video' ? (
-                        <div className="video-wrapper-large">
-                            <video 
-                                className="custom-video-player"
-                                controls
-                                preload="metadata"
-                                poster={project.images[0]}
-                            >
-                                <source src={project.video} type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                    ) : (
-                        <motion.div 
-                            className="image-display"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.3 }}
-                        >
-                            <img src={project.images[selectedImage]} alt={`Gallery ${selectedImage}`} />
-                        </motion.div>
-                    )}
-                </div>
-                
-                {/* Gallery Thumbnails */}
-                <div className="gallery-preview">
-                     <div 
-                        className={`gallery-thumb ${activeMedia === 'video' ? 'active' : ''}`}
-                        onClick={() => setActiveMedia('video')}
-                     >
-                        <div className="video-thumb">
-                            <span className="play-icon">▶</span>
-                            <span className="thumb-label">Video Chat</span>
-                        </div>
-                     </div>
-                     {project.images.map((img, i) => (
-                        <div 
-                            key={i}
-                            className={`gallery-thumb ${activeMedia === 'image' && selectedImage === i ? 'active' : ''}`}
-                            onClick={() => {
-                                setActiveMedia('image');
-                                setSelectedImage(i);
-                            }}
-                        >
-                            <img src={img} alt={`Thumbnail ${i}`} />
-                        </div>
-                     ))}
-                </div>
-            </div>
         )}
       </div>
     </motion.div>

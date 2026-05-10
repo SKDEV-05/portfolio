@@ -18,10 +18,16 @@ const TechStack = () => {
         <div className="scroll-wrapper" dir="ltr">
           <div className="track">
             {displayStack.map((tech, index) => (
-              <div className="tech-card" key={index}>
+              <a 
+                href={tech.link}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="tech-card" 
+                key={index}
+              >
                 <tech.icon className="icon" />
                 <span>{tech.name}</span>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -29,13 +35,17 @@ const TechStack = () => {
         {/* Skills Grid with Progress Bars */}
         <div className="skills-grid">
           {TECH_STACK.map((tech, index) => (
-            <motion.div 
+            <motion.a 
+              href={tech.link}
+              target="_blank"
+              rel="noopener noreferrer"
               className="skill-item"
               key={tech.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
+              style={{ textDecoration: 'none', display: 'block' }}
             >
               <div className="skill-header">
                 <div className="skill-info">
@@ -53,7 +63,7 @@ const TechStack = () => {
                   transition={{ duration: 1, delay: index * 0.05, ease: "easeOut" }}
                 />
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>

@@ -16,7 +16,8 @@ export const translations = {
       subtitle: 'WEB DEVELOPER | MOBILE DEVELOPER',
       description: 'I build full-stack web and mobile applications, from backend APIs to frontend interfaces, focusing on performance and real-world solutions. I turn complex problems into smooth, efficient code.',
       viewWork: 'View Work',
-      aboutMe: 'About Me'
+      aboutMe: 'About Me',
+      downloadCV: 'Download CV'
     },
     // Tech Stack
     techStack: {
@@ -85,7 +86,8 @@ export const translations = {
       subtitle: 'DÉVELOPPEUR WEB | DÉVELOPPEUR MOBILE',
       description: 'Je crée des applications web et mobiles full-stack, des API backend aux interfaces frontend, en mettant l\'accent sur les performances et les solutions réelles. Je transforme les problèmes complexes en code fluide et efficace.',
       viewWork: 'Voir mes travaux',
-      aboutMe: 'À propos'
+      aboutMe: 'À propos',
+      downloadCV: 'Télécharger le CV'
     },
     techStack: {
       title: 'Technologies & Outils'
@@ -149,7 +151,8 @@ export const translations = {
       subtitle: 'DESARROLLADOR WEB | DESARROLLADOR MÓVIL',
       description: 'Construyo aplicaciones web y móviles full-stack, desde APIs backend hasta interfaces frontend, enfocándome en rendimiento y soluciones del mundo real. Convierto problemas complejos en código fluido y eficiente.',
       viewWork: 'Ver trabajos',
-      aboutMe: 'Acerca de mí'
+      aboutMe: 'Acerca de mí',
+      downloadCV: 'Descargar CV'
     },
     techStack: {
       title: 'Tecnologías y Herramientas'
@@ -213,7 +216,8 @@ export const translations = {
       subtitle: 'مطور ويب | مطور تطبيقات موبايل',
       description: 'أقوم ببناء تطبيقات ويب وموبايل متكاملة، من واجهات برمجة التطبيقات الخلفية إلى الواجهات الأمامية، مع التركيز على الأداء والحلول الواقعية. أحول المشاكل المعقدة إلى كود سلس وفعال.',
       viewWork: 'عرض الأعمال',
-      aboutMe: 'عني'
+      aboutMe: 'عني',
+      downloadCV: 'تحميل السيرة الذاتية'
     },
     techStack: {
       title: 'التقنيات والأدوات'

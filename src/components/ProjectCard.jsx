@@ -6,6 +6,22 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { useLanguage } from '../i18n/LanguageContext';
 
+const ImageWithSkeleton = ({ src, alt, ...props }) => {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100%', minHeight: '300px' }}>
+      {!loaded && <div className="skeleton-loader"></div>}
+      <img
+        src={src}
+        alt={alt}
+        onLoad={() => setLoaded(true)}
+        style={{ ...props.style, opacity: loaded ? 1 : 0, transition: 'opacity 0.3s ease', width: '100%', display: 'block', objectFit: 'cover' }}
+        {...props}
+      />
+    </div>
+  );
+};
+
 const ProjectCard = ({ project, index }) => {
   const isReversed = index % 2 !== 0;
   const { t } = useLanguage();
@@ -53,7 +69,7 @@ const ProjectCard = ({ project, index }) => {
           >
             {project.assets.map((img, i) => (
               <SwiperSlide key={i}>
-                <img src={img} alt={`${title} ${i + 1}`} />
+                <ImageWithSkeleton src={img} alt={`${title} ${i + 1}`} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -63,8 +79,9 @@ const ProjectCard = ({ project, index }) => {
             <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
+                style={{ height: '100%', width: '100%' }}
             >
-                <img src={project.assets[0]} alt={title} style={{ width: '100%', borderRadius: '12px' }} />
+                <ImageWithSkeleton src={project.assets[0]} alt={title} style={{ borderRadius: '12px', objectPosition: 'top' }} />
             </motion.div>
         )}
       </div>

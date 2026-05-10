@@ -308,6 +308,31 @@
             transform: translateY(0);
           }
         }
+
+        &.cv-btn {
+          background: transparent;
+          border: 2px solid var(--color-accent);
+          color: var(--color-accent);
+
+          &::before {
+            background: var(--color-accent);
+            opacity: 0;
+          }
+
+          &:hover {
+            transform: translateY(-2px);
+            color: #000;
+            box-shadow: 0 6px 25px rgba(0, 255, 136, 0.4);
+            
+            &::before {
+              opacity: 1;
+            }
+          }
+
+          &:active {
+            transform: translateY(0);
+          }
+        }
       }
     }
   }

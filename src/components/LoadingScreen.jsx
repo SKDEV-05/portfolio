@@ -3,26 +3,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/loading.scss';
 
 const LoadingScreen = ({ onComplete }) => {
-  const [count, setCount] = useState(3);
   const [showText, setShowText] = useState(false);
 
   useEffect(() => {
-    // Countdown
-    const countdown = setInterval(() => {
-      setCount(prev => {
-        if (prev <= 1) {
-          clearInterval(countdown);
-          setShowText(true);
-          setTimeout(() => {
-            onComplete();
-          }, 1000);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(countdown);
+    // Show spinner for 1.5 seconds, then text for 1 second
+    const timer1 = setTimeout(() => setShowText(true), 1500);
+    const timer2 = setTimeout(() => onComplete(), 3000);
+    
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
   }, [onComplete]);
 
   return (
@@ -36,14 +27,13 @@ const LoadingScreen = ({ onComplete }) => {
         <div className="loading-content">
           {!showText ? (
             <motion.div 
-              className="countdown"
-              key={count}
+              className="spinner-container"
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 1.5, opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              {count}
+              <div className="professional-spinner"></div>
             </motion.div>
           ) : (
             <motion.div 

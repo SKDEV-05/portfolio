@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { PROFILE } from '../data/index.jsx';
 // import ThreeBackground from './ThreeBackground.jsx';
 import { useLanguage } from '../i18n/LanguageContext';
+import cvFile from '../assets/cv/Saad_Korma_CV.pdf';
 
 const Hero = () => {
   const nameRef = useRef(null);
@@ -132,6 +133,7 @@ const Hero = () => {
           >
             <a href="#projects" className="btn primary">{t('hero.viewWork')}</a>
             <a href="#about" className="btn secondary">{t('hero.aboutMe')}</a>
+            <a href={cvFile} download="Saad_Korma_CV.pdf" className="btn cv-btn">{t('hero.downloadCV')}</a>
           </motion.div>
         </motion.div>
 
